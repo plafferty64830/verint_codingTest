@@ -4,10 +4,9 @@ import ProfilePicture from './ProfilePicture';
 import Name from './Name';
 import Content from './Content';
 import { sha256 } from 'js-sha256';
+import { formatTime } from '../../functions/date/formatTime';
 
-const Customer = ({ customer }) => {
-
-    console.log(customer.emailAddress)
+const Customer = ({ customer, expectedTime }) => {
 
     //get the gravatar image url
     const profileUrl = customer.emailAddress !== null && customer.emailAddress !== undefined ?
@@ -16,12 +15,12 @@ const Customer = ({ customer }) => {
 
     return (
         <CustomerCard>
-            <ProfilePicture>
+            <ProfilePicture style={{flexDirection: 'column'}}>
                 <img style={{ height: '100%' }} src={profileUrl} />
             </ProfilePicture>
-            <Content>
+            <Content style={{flexDirection: 'column'}}>
                 <Name>{customer.name}</Name>
-                <div></div>
+                <div>{formatTime(expectedTime)}</div>
             </Content>
         </CustomerCard>
     )

@@ -17,9 +17,9 @@ const App = () =>
                 <Logo src={logo} />
             </Navigation>
             <Content>
-            <QueueScreen />
+                <QueueScreen />
             </Content>
         </Container>
     </Provider>;
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

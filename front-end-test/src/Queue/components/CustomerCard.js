@@ -5,6 +5,6 @@ export default styled.div`
   border-width: 1px;
   border-color: lightgray;
   border-radius: 0.2em;
-  width: 290px;
+  width: auto;
   height: 370px;
 `;
