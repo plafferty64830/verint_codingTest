@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {fetchQueueData} from '../mockApi';
+
 import Customer from './components/Customer';
+import { fetchQueueData } from '../api/queue/getQueue';
 
 export default class extends Component {
     constructor(props) {
@@ -12,15 +13,15 @@ export default class extends Component {
 
     componentDidMount() {
         fetchQueueData()
-            .then(response => response.json())
-            .then(json => {
+            .then((response) => {
                 this.setState({
-                    customers: json.queueData.queue.customersToday
-                })
-            });
+                    customers: response
+                });
+            })
     }
 
     render() {
+
         let customers = [];
         for(let i = 0; i < this.state?.customers.length; ++i) {
             customers.push(
@@ -29,7 +30,7 @@ export default class extends Component {
                 //         {this.state.customers[i].customer.name}
                 //     </div>
                 // </div>
-                <Customer customer={this.state.customers[i].customer} />
+                <Customer key={i} customer={this.state.customers[i].customer} />
             );
         }
 
